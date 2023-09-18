@@ -31,13 +31,13 @@ export default class UsersController {
 
   public async edit({}: HttpContextContract) {}
 
-  public async update({ params: { id },request, response  }: HttpContextContract) {
+  public async update({ params,request, response  }: HttpContextContract) {
     
-    const insert = request.only(['nama','nomor_telfon','gender'])
+    const input = request.only(['nama','nomor_telfon','gender'])
     try{
-      const data = await User.findBy('id',id)
-      insert?.merge(data)
-      await insert?.save()
+      const data = await User.findBy('id',params.id)
+      data?.merge(input)
+      await data?.save()
 
       return response.status(200).json({code:200,message:'success',data:data})
     } catch(error){
@@ -47,7 +47,16 @@ export default class UsersController {
     
   }
 
-  public async destroy({ params: { id } }: HttpContextContract) {
-    return await User.query().where({ id: id }).delete();
+  public async destroy({ params: { id }, response,  request }: HttpContextContract) {
+   
+    try{
+      const data = await User.findBy('id',id)
+      
+      await data?.delete()
+
+      return response.status(200).json({code:200,message:'success delete'})
+    } catch(error){
+      return response.status(500).json({code:500,message:error.message})
+    }
   }
 }
