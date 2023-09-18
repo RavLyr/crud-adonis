@@ -14,7 +14,7 @@ export default class UsersController {
   public async create({}: HttpContextContract) {}
 
   public async store({ request, response }: HttpContextContract) {
-    const insert = request.only(["nama", "nomor_telfon", "gender"]);
+    const insert = request.only(["nama", "nomorTelfon", "gender"]);
     try {
       const data = await User.create(insert);
       return response
@@ -33,7 +33,7 @@ export default class UsersController {
 
   public async update({ params,request, response  }: HttpContextContract) {
     
-    const input = request.only(['nama','nomor_telfon','gender'])
+    const input = request.only(['nama','nomorTelfon','gender'])
     try{
       const data = await User.findBy('id',params.id)
       data?.merge(input)

@@ -12,7 +12,7 @@ export default class User extends BaseModel {
   public nama: string;
 
   @column()
-  public nomor_telfon: number;
+  public nomorTelfon: number;
 
   @column()
   public gender: string;
