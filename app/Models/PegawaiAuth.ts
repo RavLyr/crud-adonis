@@ -7,6 +7,9 @@ export default class PegawaiAuth extends BaseModel {
   public id: number
 
   @column()
+  public username: string
+
+  @column()
   public email: string
 
   @column({ serializeAs: null })
