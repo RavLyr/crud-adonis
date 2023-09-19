@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.integer('user_id').unsigned().references('id').inTable('pegawai_auths').onDelete('CASCADE')
       table.string('name').notNullable()
       table.string('type').notNullable()
+      table.string('expires_at').nullable()
       table.string('token', 64).notNullable().unique()
 
       /**
