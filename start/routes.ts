@@ -26,18 +26,12 @@ Route.get("/", async () => {
 
 import "./routes/user";
 import "./routes/user";
-import  PegawaiRoutes from './routes/pegawai';
+import PegawaiRoutes from "./routes/pegawai";
 import auth from "./routes/auth";
-
 
 Route.group(() => {
   Route.group(() => {
-    PegawaiRoutes().prefix('/pegawai').middleware('auth')
-    auth().prefix('/auth')
-  })
-  
-   
-  }).prefix('/api/v1')
-    
-  
-  
+    PegawaiRoutes().prefix("/pegawai").middleware('auth');
+    auth().prefix("auth");
+  });
+}).prefix("/api/v1");
