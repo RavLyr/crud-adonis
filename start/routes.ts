@@ -24,4 +24,13 @@ Route.get("/", async () => {
   return { hello: "world" };
 });
 
-Route.resource("users", "UsersController");
+
+import PegawaiRoutes from "./routes/pegawai";
+import auth from "./routes/auth";
+
+Route.group(() => {
+  Route.group(() => {
+    PegawaiRoutes().prefix("/pegawai").middleware('auth');
+    auth().prefix("auth");
+  });
+}).prefix("/api/v1");
