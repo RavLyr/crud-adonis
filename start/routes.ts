@@ -24,8 +24,7 @@ Route.get("/", async () => {
   return { hello: "world" };
 });
 
-import "./routes/user";
-import "./routes/user";
+
 import PegawaiRoutes from "./routes/pegawai";
 import auth from "./routes/auth";
 
